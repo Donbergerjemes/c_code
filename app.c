@@ -1,57 +1,84 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-int main (){
+int linear_search(int key, int array[5]);
 
-int started_size;
-do
-{    
-    printf("eneter the started size of the population\n");
+int binary_search(int key, int size, int arr[])
 
-     scanf("%d", &started_size);
-} 
-while (started_size<9);
-
-int ended_size;
-do
+int main ()
 {
-    printf("enter the ended size of the population\n");
-    scanf("%d", &ended_size);
+ 
+  int arr[5];
 
-} 
-while (ended_size<started_size);
+  printf("enter the element in the array\n");
 
-int n=started_size;
+  for( int i = 0 ; i < 5 ; i++)
+  {
+    scanf("%d", &arr[i]);
+  }
+printf("the element in the array are\n")
+  for ( int i = 0 ; i< 5; i++)
+  {
+    printf("%d\n",arr[i]);
+  }
 
-int year=0;
+   int number ;
 
+  printf("what  is the number that you want to find in the array :\n");
 
-while(n<ended_size){
+   scanf("%d",&number);
 
-    int loss = n / 4;
+  int result =linear_search(number, arr);
 
-    int gain = n / 3;
-    
-    n=n+gain-loss;
-
-    year++;
-
+  if (result)
+  {
+    printf("the result is found and here it is  %d : ",result);
+  }
+  else
+  
+{
+  printf("not in the array sorry  for you ");
 }
-printf("the final result is %d", year);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  return 0;
 }
+
+ int linear_search(int key, int array[])
+ {
+   for (int i = 0; i < 5; i++)
+   {
+     if (key == array[i])
+     {
+       return key;
+     }
+   }
+     return 0;
+ }
+
+ int binary_search( int key, int size,int arr[])
+ {
+  int low =0 ;
+
+  int high= size -1;
+
+  int mid = low + (high - low)/2;
+
+   while(low <= high)
+   {
+    if(arr[mid] == key)
+    {
+      return mid;
+    }
+   }
+    if(arr[mid] < key)
+   {
+     low = mid +1 ;
+   }
+   else
+   {
+     high= mid -1;
+   }
+
+ }
